@@ -50,13 +50,15 @@ async function sendMessage() {
     appendMessage('user', message);
     input.value = '';
     await backend.addMessage('user', message);
-    // Here you would normally send the message to Claude API and get a response
-    // For now, we'll just simulate a response
-    setTimeout(() => {
-      const response = "This is a simulated response from Claude.";
+    
+    try {
+      const response = await backend.chatWithClaude(message);
       appendMessage('assistant', response);
-      backend.addMessage('assistant', response);
-    }, 1000);
+      await backend.addMessage('assistant', response);
+    } catch (error) {
+      console.error('Error chatting with Claude:', error);
+      appendMessage('assistant', 'Sorry, I encountered an error while processing your request.');
+    }
   }
 }
 

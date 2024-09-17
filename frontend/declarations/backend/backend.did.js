@@ -11,6 +11,7 @@ export const idlFactory = ({ IDL }) => {
   return IDL.Service({
     'addMessage' : IDL.Func([IDL.Text, IDL.Text], [], []),
     'addVoiceCommand' : IDL.Func([IDL.Text, IDL.Text], [], []),
+    'chatWithClaude' : IDL.Func([IDL.Text], [IDL.Text], []),
     'getConversationHistory' : IDL.Func([], [IDL.Vec(Message)], ['query']),
     'getUseTTS' : IDL.Func([], [IDL.Bool], ['query']),
     'getVoiceCommands' : IDL.Func([], [IDL.Vec(VoiceCommand)], ['query']),

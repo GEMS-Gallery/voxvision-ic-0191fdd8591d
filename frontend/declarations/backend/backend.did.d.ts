@@ -11,6 +11,7 @@ export interface VoiceCommand { 'action' : string, 'command' : string }
 export interface _SERVICE {
   'addMessage' : ActorMethod<[string, string], undefined>,
   'addVoiceCommand' : ActorMethod<[string, string], undefined>,
+  'chatWithClaude' : ActorMethod<[string], string>,
   'getConversationHistory' : ActorMethod<[], Array<Message>>,
   'getUseTTS' : ActorMethod<[], boolean>,
   'getVoiceCommands' : ActorMethod<[], Array<VoiceCommand>>,

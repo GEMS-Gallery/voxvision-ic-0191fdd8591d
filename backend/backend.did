@@ -12,6 +12,7 @@ type Message =
 service : {
   addMessage: (text, text) -> ();
   addVoiceCommand: (text, text) -> ();
+  chatWithClaude: (text) -> (text);
   getConversationHistory: () -> (vec Message) query;
   getUseTTS: () -> (bool) query;
   getVoiceCommands: () -> (vec VoiceCommand) query;

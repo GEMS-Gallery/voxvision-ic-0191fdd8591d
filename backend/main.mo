@@ -9,6 +9,7 @@ import Iter "mo:base/Iter";
 import Nat "mo:base/Nat";
 import Text "mo:base/Text";
 import Time "mo:base/Time";
+import Buffer "mo:base/Buffer";
 
 actor {
   // Types
@@ -33,6 +34,10 @@ actor {
   stable var conversationHistory : [Message] = [];
   stable var ttsEnabled : Bool = true;
   stable var useTTS : Bool = false;
+
+  // Environment variables (replace with actual values)
+  let CLAUDE_API_KEY : Text = "YOUR_CLAUDE_API_KEY";
+  let CLAUDE_API_URL : Text = "https://api.anthropic.com/v1/messages";
 
   // Functions
   public func addVoiceCommand(command: Text, action: Text) : async () {
@@ -84,6 +89,24 @@ actor {
       markdown #= roleTitle # "\n\n" # message.content # "\n\n";
     };
     markdown
+  };
+
+  // New function to chat with Claude
+  public func chatWithClaude(message: Text) : async Text {
+    // Note: This is a placeholder implementation as we can't make HTTP requests directly from Motoko
+    // In a real implementation, you would need to use the Internet Computer's HTTP outcalls feature
+    // or an intermediary canister that can make HTTP requests
+
+    Debug.print("Simulating chat with Claude: " # message);
+
+    // Simulate a response
+    let simulatedResponse = "This is a simulated response from Claude. Your message was: " # message;
+
+    // Add the simulated interaction to the conversation history
+    ignore addMessage("user", message);
+    ignore addMessage("assistant", simulatedResponse);
+
+    simulatedResponse
   };
 
   // System functions
